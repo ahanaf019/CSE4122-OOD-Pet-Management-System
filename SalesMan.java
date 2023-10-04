@@ -12,6 +12,7 @@ public class SalesMan implements PetOwner {
 
     @Override
     public void addPet(Pet pet) {
+        pet.setOwner(this);
         pets.add(pet);
         
     }
@@ -44,6 +45,18 @@ public class SalesMan implements PetOwner {
     public void sellPet(Pet pet, PetOwner newOwner) {
         newOwner.addPet(pet);
         removePet(pet);
+        System.out.println(salesManName + " sold a " + pet.getTypeOfPet() + " with name: " + pet.getName() + " to " + newOwner.getName());
+    }
+
+    @Override
+    public Pet getPet(String name) {
+        for(int i = 0; i < pets.size(); i++) {
+            if(pets.get(i).getName() == name) {
+                return pets.get(i);
+            }
+        }
+        System.out.println("Error! Pet not found with given name.");
+        return null;
     }
     
 }

@@ -2,9 +2,13 @@ public class Dog implements Pet {
 
     String typeOfPet;
     String nameOfPet;
+    PetOwner petOwner;
 
     public Dog(String name) {
         this.nameOfPet = name;
+        this.typeOfPet = "dog";
+        this.petOwner = null;
+
     } 
     
     @Override
@@ -24,7 +28,18 @@ public class Dog implements Pet {
     }
 
     public void bark() {
-        System.out.println("*BARK SOUNDS*");
+        System.out.println("--BARK SOUNDS--");
+    }
+
+    
+    @Override
+    public PetOwner getOwner() {
+        return this.petOwner;
+    }
+
+    @Override
+    public void setOwner(PetOwner owner) {
+        this.petOwner = owner;
     }
 
     
