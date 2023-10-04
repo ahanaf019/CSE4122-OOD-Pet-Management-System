@@ -1,0 +1,50 @@
+import java.util.ArrayList;
+
+public class Person implements PetOwner {
+
+    String personName;
+    ArrayList<Pet> pets;
+
+    public Person(String name) {
+        this.personName = name;
+        pets = new ArrayList<Pet>();
+    }
+
+    @Override
+    public void addPet(Pet pet) {
+        pets.add(pet);
+    
+    }
+
+    @Override
+    public void removePet(Pet pet) {
+        String name = pet.getName();
+
+        for(int i = 0; i < pets.size(); i++) {
+            if(pets.get(i).getName() == name) {
+                pets.remove(i);
+                System.out.println("Successfully Removed Pet");
+                return;
+            }
+        }
+
+        System.out.println("Error! Pet not found.");
+    }
+
+    @Override
+    public int getPetCount() {
+        return pets.size();
+    }
+
+    @Override
+    public String getName() {
+        return personName;
+    }
+
+    public void buyPet(Pet pet, SalesMan owner) {
+        owner.removePet(pet);
+        addPet(pet);
+    }
+
+    
+}
